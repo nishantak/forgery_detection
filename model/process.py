@@ -21,8 +21,9 @@ def preprocess_image(image, img_size=224):
 
 # pixel analysis 
 def texture_analysis(image):
-    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    lbp = local_binary_pattern(gray_image, P=8, R=1, method="uniform")
+    if len(image.shape) != 2:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
+    lbp = local_binary_pattern(image, P=8, R=1, method="uniform")
     lbp_normalized = (lbp - np.min(lbp)) / (np.max(lbp) - np.min(lbp))
 
    # plt.imshow(lbp_normalized, cmap='gray')

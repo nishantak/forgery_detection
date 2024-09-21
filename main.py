@@ -17,9 +17,7 @@ def is_forgery (image_path):
     with torch.no_grad():
         output = model(combined_img_tensor)
         confidence = torch.softmax(output, dim=1).max().item()
-        predicted_class = output.argmax(dim=1).item()
-
-    is_forged = predicted_class == 1    # 0 = Authentic, 1 = Forged
+        is_forged = output.argmax(dim=1).item()    # 0 = Authentic, 1 = Forged
 
     return is_forged, confidence
 

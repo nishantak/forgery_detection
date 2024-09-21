@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
-from process import augment_image, texture_analysis, preprocess_image
+from process import augment_image, texture_analysis
 from sklearn.model_selection import KFold
 import copy
 from utils import get_data_loader
